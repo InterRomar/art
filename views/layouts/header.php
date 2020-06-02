@@ -9,6 +9,7 @@
         <!-- <link href="/template/css/bootstrap.min.css" rel="stylesheet"> -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
         <link href="/template/css/header.css" rel="stylesheet">
+        <link href="/template/css/main.css" rel="stylesheet"> 
 
         <link href="/template/css/font-awesome.min.css" rel="stylesheet">
         <link href="/template/css/prettyPhoto.css" rel="stylesheet">
@@ -16,7 +17,6 @@
         <!-- <link href="/template/css/animate.css" rel="stylesheet">
         <link href="/template/css/footer.css" rel="stylesheet">
         <link href="/template/css/light.css" rel="stylesheet">
-        <link href="/template/css/main.css" rel="stylesheet">  -->
         <!-- <link href="/template/css/responsive.css" rel="stylesheet"> -->
 
         <!--[if lt IE 9]>
