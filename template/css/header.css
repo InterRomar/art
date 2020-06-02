@@ -1,23 +1,28 @@
-.nav-link--category-btn:hover  + .nav__sublist{
-    transform: scaleY(1);
+.nav-link--category-btn {
+    padding-left: 20px;
+    padding-right: 20px;
 }
 .nav-link {
     font-size: 17px;
 }
 
 .nav__sublist {
-  transform: scaleY(0);
-  transform-origin: 0 0 ;
+  /* transform: scaleY(0); */
+  /* transform-origin: 0 0 ; */
   transition: 0.2s ease-in;
   position: absolute;
   list-style:none;
   margin: 0;
   padding: 0;
 }
-.nav__sublist:hover {
-  transform: scaleY(1);
-  
+
+@media (max-width: 768px) {
+    .nav__sublist {
+        position: static;
+    }
 }
+
+
 .nav-item {
     position: relative;
 }
@@ -27,4 +32,10 @@
 }
 .nav__sublist li:first-child .nav-link--categories {
     border-top: none;
+}
+
+@media (max-width: 768px) {
+    .custom__navbar {
+        position: sticky;
+    }
 }

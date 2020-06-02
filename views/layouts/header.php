@@ -10,13 +10,13 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
         <link href="/template/css/header.css" rel="stylesheet">
         <link href="/template/css/main.css" rel="stylesheet"> 
+        <link href="/template/css/footer.css" rel="stylesheet">
 
         <link href="/template/css/font-awesome.min.css" rel="stylesheet">
         <link href="/template/css/prettyPhoto.css" rel="stylesheet">
         <link href="/template/css/price-range.css" rel="stylesheet">
         <!-- <link href="/template/css/animate.css" rel="stylesheet">
-        <link href="/template/css/footer.css" rel="stylesheet">
-        <link href="/template/css/light.css" rel="stylesheet">
+        <!-- <link href="/template/css/light.css" rel="stylesheet"> -->
         <!-- <link href="/template/css/responsive.css" rel="stylesheet"> -->
 
         <!--[if lt IE 9]>
@@ -37,7 +37,7 @@
 
             <header id="header">
 
-                <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+                <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark custom__navbar">
                     <a class="navbar-brand" href="/"><img src="/template/images/home/logo.png" alt="" /></a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -48,8 +48,11 @@
                             <a class="nav-link" href="/">Главная</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link nav-link--category-btn pr-5 pl-5" href="#">Категории <i class="fas fa-chevron-down"></i></a>
-                            <ul class='nav__sublist bg-dark'>
+                            <a class="nav-link nav-link--category-btn " href="#categoryList" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="collapseExample"> 
+                                Категории 
+                                <i class="fas fa-chevron-down"></i>
+                            </a>
+                            <ul class='nav__sublist bg-dark collapse' id="categoryList">
                                 <?php foreach($categories as $categoryItem): ?>
                                     <li>
                                         <a href="/category/<?php echo $categoryItem['id'];?>" class='pl-4 nav-link--categories nav-link'>

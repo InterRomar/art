@@ -22,3 +22,9 @@
 .footer-item {
     margin: 0;
 }
+
+@media (max-width: 768px) {
+    .page-footer {
+        position: static;
+    } 
+}
