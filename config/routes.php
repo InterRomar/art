@@ -1,6 +1,8 @@
 <?php
 
 return array(
+    // Отзывы:
+    'feedback' => 'feedback/index/', // actionView в FeedbackController
     // Товар:
     'product/([0-9]+)' => 'product/view/$1', // actionView в ProductController
     // Каталог:
