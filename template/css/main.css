@@ -8,6 +8,11 @@ body {
 
     padding-bottom: 100px;
 }
+@media (max-width: 768px) {
+    body {
+        padding-bottom: 0;
+    }
+}
 
 ul {
     list-style: none;
@@ -68,5 +73,5 @@ section {
     font-size: 30px;
 }
 .context-btn:focus {
-    outline: none;
+    outline: 1px red;
 }
