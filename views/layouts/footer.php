@@ -1,12 +1,12 @@
     <div class="page-buffer"></div>
 </div>
 
-<footer id="footer" class="page-footer">
+<footer id="footer" class="page-footer fixed-bottom bg-dark text-light">
 
         <div class="container">
-            <div class="footer__inner">
-                <p class="">Copyright © 2015</p>
-                <p class="">Курс PHP Start</p>
+            <div class="footer__inner d-flex flex-row justify-content-between">
+                <p class="mb-3 mt-3">Copyright © 2015</p>
+                <p class="mb-3 mt-3">Курс PHP Start</p>
             </div>
         </div>
 </footer>

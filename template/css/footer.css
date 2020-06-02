@@ -18,3 +18,7 @@
     display: flex;
     justify-content: space-between;
 }
+
+.footer-item {
+    margin: 0;
+}
