@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-<<<<<<< HEAD
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,26 +17,6 @@
         <link href="/template/css/price-range.css" rel="stylesheet">
         <!-- <link href="/template/css/animate.css" rel="stylesheet">
         <!-- <link href="/template/css/light.css" rel="stylesheet"> -->
-=======
-
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="">
-  <meta name="author" content="">
-  <title>Главная</title>
-  <!-- <link href="/template/css/bootstrap.min.css" rel="stylesheet"> -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
-  <link href="/template/css/header.css" rel="stylesheet">
-  <link href="/template/css/main.css" rel="stylesheet">
-
-  <link href="/template/css/font-awesome.min.css" rel="stylesheet">
-  <link href="/template/css/prettyPhoto.css" rel="stylesheet">
-  <link href="/template/css/price-range.css" rel="stylesheet">
-  <!-- <link href="/template/css/animate.css" rel="stylesheet">
-        <link href="/template/css/footer.css" rel="stylesheet">
-        <link href="/template/css/light.css" rel="stylesheet">
->>>>>>> 5db827007fd6eaf96f844cfb090b54d4e299f49a
         <!-- <link href="/template/css/responsive.css" rel="stylesheet"> -->
 
   <!--[if lt IE 9]>
@@ -61,7 +40,6 @@
 
     <header id="header">
 
-<<<<<<< HEAD
                 <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark custom__navbar">
                     <a class="navbar-brand" href="/"><img src="/template/images/home/logo.png" alt="" /></a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -97,42 +75,6 @@
                         <a class="nav-link" href="/feedback/">Отзывы</a>
                         </li>
                     </ul>
-=======
-      <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-        <a class="navbar-brand" href="/"><img src="/template/images/home/logo.png" alt="" /></a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
-          aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarCollapse">
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-              <a class="nav-link" href="/">Главная</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link nav-link--category-btn pr-5 pl-5" href="#">Категории <i
-                  class="fas fa-chevron-down"></i></a>
-              <ul class='nav__sublist bg-dark'>
-                <?php foreach($categories as $categoryItem): ?>
-                <li>
-                  <a href="/category/<?php echo $categoryItem['id'];?>" class='pl-4 nav-link--categories nav-link'>
-                    <?php echo $categoryItem['name'];?>
-                  </a>
-                </li>
-                <?php endforeach; ?>
-              </ul>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/about/">О магазине</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/contacts/">Контакты</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/feedback/">Отзывы</a>
-            </li>
-          </ul>
->>>>>>> 5db827007fd6eaf96f844cfb090b54d4e299f49a
 
           <ul class="navbar-nav">
             <li class="nav-item">
