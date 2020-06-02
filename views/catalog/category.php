@@ -4,7 +4,10 @@
 
 <div class="container">
     <section class="products">
-        <h2 class="products__title">Последние товары</h2>
+        <h2 class="products__title">
+        <?php
+            foreach($categories as $categoryItem) 
+                if ($categoryId == $categoryItem['id']) echo $categoryItem['name']; ?></h2>
 
         
         
