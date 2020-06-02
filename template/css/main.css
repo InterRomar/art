@@ -68,5 +68,5 @@ section {
     font-size: 30px;
 }
 .context-btn:focus {
-    outline: none;
+    outline: 1px blue;
 }
