@@ -69,5 +69,7 @@
       <input type="text" name="name">
 
       <label>Отзыв</label>
-      <textarea name="text">
-    <?php include ROOT . '/views/layouts/footer.php'; ?>
+      <textarea name="text"></textarea>
+</form>
+
+<?php include ROOT . '/views/layouts/footer.php'; ?>
