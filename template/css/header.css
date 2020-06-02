@@ -1,0 +1,101 @@
+#header {
+  position: fixed;
+  width: 100%;
+  z-index: 1000;
+
+}
+.header__wrapper {
+  display: flex;
+  justify-content: space-between;
+  background:#819A32; 
+  background: #333;
+  padding: 0 15px;
+}
+
+
+.nav {
+  list-style: none; /*убираем маркеры списка*/
+  margin: 0; /*убираем отступы*/
+  padding-left: 0; /*убираем отступы*/
+  background:#819A32; /*добавляем фон всему меню*/
+  background: #333;
+  height: 50px; /*задаем высоту*/
+
+  display: flex;
+}
+.nav__link {
+  text-decoration: none; /*убираем подчеркивание текста ссылок*/
+  background:#819A32; /*добавляем фон к пункту меню*/
+  background: #333;
+  
+  color:#fff; /*меняем цвет ссылок*/
+  padding:0px 15px; /*добавляем отступ*/
+  font-family: arial; /*меняем шрифт*/
+  line-height:50px; /*ровняем меню по вертикали*/
+  display: block; 
+  /* border-right: 1px solid #677B27; добавляем бордюр справа */
+  -moz-transition: all 0.3s 0.01s ease; /*делаем плавный переход*/
+  -o-transition: all 0.3s 0.01s ease;
+  -webkit-transition: all 0.3s 0.01s ease;
+
+  text-align: center;
+
+  position: relative;
+}
+
+/* Разделение между ссылками навигации */
+.nav__link::before {    
+  z-index: 2000;
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1px;
+  height: 100%;
+  background: rgba(255,255,255,0.4);
+  
+}
+.nav__link--last {
+  margin-right: -15px;
+  padding: 0 30px;
+}
+
+/* Стили для выпадающего меню категорий */
+.nav__link--categories {
+    border-top: 1px solid rgba(255,255,255,0.4);
+    text-align: left;
+}
+
+.nav__link--category-btn:hover  + .nav__sublist{
+  transform: scaleY(1);
+}
+
+.nav__sublist {
+  transform: scaleY(0);
+  transform-origin: 0 0 ;
+  transition: 0.2s ease-in;
+}
+.nav__sublist:hover {
+  transform: scaleY(1);
+  
+}
+
+
+/* Лого */
+.logo {
+  line-height: 0;
+}
+/* Обнуляем псевдоэлемент для лого */
+.logo::before {
+  width: 0;
+  height: 0;
+}
+.nav__link:hover {
+  background:#D43737;/*добавляем эффект при наведении*/
+}
+
+.logo:hover {
+  background: #333;
+}
+     
+
