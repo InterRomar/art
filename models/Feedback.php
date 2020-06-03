@@ -6,6 +6,29 @@
 class Feedback
 {
 
+    public static function addComment($id,$id_user, $comment, $rating)
+    {
+    // Приводим $id к типу integer
+    $id = intval($id);
+    
+    // Текст запроса к БД
+    $sql = 'INSERT INTO rating_goods (id_user, id_goods, rating, comment) VALUES '
+    . '(:id_user, :id, :rating, :comment)';
+    
+    // Получение и возврат результатов. Используется подготовленный запрос
+    $result = $db->prepare($sql);
+    $result->bindParam(':id_user', $id_user, PDO::PARAM_STR);
+    $result->bindParam(':id', $id, PDO::PARAM_STR);
+    $result->bindParam(':rating', $rating, PDO::PARAM_STR);
+    $result->bindParam(':comment', $comment, PDO::PARAM_INT);
+    
+    if ($result->execute()) {
+    // Если запрос выполенен успешно, возвращаем id добавленной записи
+    return $db->lastInsertId();
+    }
+    // Иначе возвращаем 0
+    return 0;
+    }
 
     /**
      * Возвращает данные об оставленном комментарии

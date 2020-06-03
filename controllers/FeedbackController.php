@@ -42,4 +42,17 @@ class FeedbackController
             $sth->execute($form);
         }
     }
+
+    public function actionAddAjax($id) {
+        // Feedback::addComment($id, $id_user = 5, $comment, $rating);
+        // return true;
+
+        $result = array(
+            'comment' => $_POST["comment"],
+            'rating' => $_POST["rating"]
+        ); 
+    
+        // Переводим массив в JSON
+        echo json_encode($result); 
+    }
 }

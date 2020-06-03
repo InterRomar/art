@@ -19,7 +19,7 @@ function sendAjaxForm(result_form, ajax_form, url) {
         success: function(response) { //Данные отправлены успешно
             if (response) {
                 result = $.parseJSON(response);
-        	    $('#result_form').html('данные получены успешно');
+        	    $('#result_form').html(`Рейтинг: ${result.rating} <br> Комментарий: ${result.comment}`);
             } else {
                 $('#result_form').html('Ответа не поступило(');
                 console.log('Ответа не поступило(');
