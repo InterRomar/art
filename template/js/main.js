@@ -13,6 +13,8 @@ function ibg(){
 
 
 
+
+
 // /*price range*/
 
 // $('#sl2').slider();

@@ -87,6 +87,13 @@ async function hello() {
           <div class="row">
             <div class="col-sm-12">
               <h5>Комментарии</h5>
+
+               <!-- <div class="row"> -->
+                  <div class=" col-12">
+                    <textarea name="" id="" cols="60" rows="10" placeholder="Enter your comment.."></textarea>
+                  <!-- </div> -->
+              </div> 
+
               <?php foreach($comments as $comment):?>
               <?php
                     // for($i = 0;$i < 5; $i++)
@@ -109,5 +116,36 @@ async function hello() {
     </div>
   </div>
 </section>
+
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+  Запустить модальное окно
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form action="" id="ajax_form">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+                <input type="text" name="rating" placeholder="enter rating"> <br>
+                <input type="text" name="comment" placeholder="enter comment"> <br>
+                <input type="hidden" name="id" value="<?php echo $product['id']; ?>">
+        </div>
+        <hr>
+        <div  action="" id="result_form"></div>
+        <div class="modal-footer">
+          <button type="button" data-id="<?php echo $product['id']; ?>"  id="submitComment" class="btn btn-primary">Save changes</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
 
 <?php include ROOT . '/views/layouts/footer.php'; ?>

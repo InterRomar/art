@@ -2,7 +2,11 @@
 
 return array(
     // Отзывы:
+    
     'feedback' => 'feedback/index/', // actionView в FeedbackController
+    'feedback/addAjax/([0-9]+)' => 'feedback/addAjax/$1', // actionAddAjax в FeedbackController
+
+
     // Товар:
     'product/([0-9]+)' => 'product/view/$1', // actionView в ProductController
     // Каталог:
