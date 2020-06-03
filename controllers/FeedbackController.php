@@ -49,7 +49,8 @@ class FeedbackController
 
         $result = array(
             'comment' => $_POST["comment"],
-            'rating' => $_POST["rating"]
+            'rating' => $_POST["rating"],
+            'id' => $_POST["id"],
         ); 
     
         // Переводим массив в JSON
