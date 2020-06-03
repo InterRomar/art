@@ -1,5 +1,17 @@
 <?php include ROOT . '/views/layouts/header.php'; ?>
 
+<script>
+async function hello() {
+  let data = await '<?php echo json_encode($comments)?>'
+  
+  console.log(JSON.parse(data));
+  // console.log(data);
+  
+}
+  
+  
+</script>
+
 <section>
   <div class="container">
     <div class="row">
@@ -24,7 +36,6 @@
 
       <div class="col-sm-9 padding-right">
         <div class="product-details">
-          <!--product-details-->
           <div class="row">
             <div class="col-sm-5">
               <div class="view-product">
@@ -33,7 +44,6 @@
             </div>
             <div class="col-sm-7">
               <div class="product-information">
-                <!--/product-information-->
 
                 <?php if ($product['is_new']): ?>
                 <img src="/template/images/product-details/new.jpg" class="newarrival" alt="" />
@@ -50,43 +60,50 @@
                 <p><b>Наличие:</b> <?php echo Product::getAvailabilityText($product['availability']); ?></p>
                 <p><b>Производитель:</b> <?php echo $product['brand']; ?></p>
               </div>
-              <!--/product-information-->
             </div>
           </div>
+
+
+
           <div class="row">
             <div class="col-sm-12">
               <br />
               <h5>Описание товара</h5>
-              <?php echo $product['description']; ?>
+              <p class="product__description">
+                <?php echo $product['description']; ?>
+              </p>
             </div>
           </div>
-          <div class="row">
+
+          <div class="row mb-4">
             <div class="col-sm-12">
               <br />
-              <h5>Средний рейтинг:
+              <h5>Рейтинг:
               <?php echo Feedback::getRating($product['id']); ?>
               </h5>
             </div>
           </div>
+
           <div class="row">
             <div class="col-sm-12">
-              <br />
               <h5>Комментарии</h5>
               <?php foreach($comments as $comment):?>
               <?php
-                    for($i = 0;$i < 5; $i++)
-                        if($comment['rating']>$i)
-                        echo "*";
-                        else echo"-";
-
-                ?>
+                    // for($i = 0;$i < 5; $i++)
+                    //     if($comment['rating']>$i)
+                    //     echo "*";
+                    //     else echo"-";
+                    ?>
+                    <small>
+                      <?php echo $comment['rating']  ?>
+                    </small>
               <b><?php echo $comment['comment'];?></b>
               <b><?php echo ' '.User::getUserNameById($comment['id_user']);?></b><br>
               <?php endforeach; ?>
             </div>
           </div>
+
         </div>
-        <!--/product-details-->
 
       </div>
     </div>
