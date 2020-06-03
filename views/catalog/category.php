@@ -21,8 +21,14 @@
                                             <a href="/product/<?php echo $product['id']; ?>" class='card__name text-dark'>
                                             <?php
                                                 if (mb_strlen($product['name']) <= 23 )
-                                                    echo $product['name'];
-                                                else echo trim(mb_substr($product['name'], 0, 22))."..";
+                                                {
+                                                    echo $product['name']." ";
+                                                    echo Feedback::getRating($product['id']);
+                                                }
+                                                else 
+                                                {   
+                                                    echo trim(mb_substr($product['name'], 0, 22))."..|";
+                                                }
                                                 
                                             ?>
                                             </a>

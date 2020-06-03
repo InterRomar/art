@@ -1,26 +1,23 @@
 <?php
 
 /**
- * Контроллер ProductController
- * Товар
+ * Контроллер FeedbackController
+ * Отзыв/Оценка товара
  */
 class FeedbackController
 {
 
     /**
-     * Action для страницы просмотра товара
-     * @param integer $productId <p>id товара</p>
+     * Action для главной страницы
      */
-    public function actionIndex($productId)
+    public function actionView()
     {
         // Список категорий для левого меню
-        $categories = Category::getCategoriesList();
-        $user = User::getUserById($userId);
-        // Получаем инфомрацию о товаре
-        $product = Product::getProductById($productId);
+        $comments = Feedback::getFeedbackByGoods($product['id']);
+        $gog = "fsdf";
 
         // Подключаем вид
-        require_once(ROOT . '/views/feedback/index.php');
+        require_once(ROOT . '/views/product/view.php');
         return true;
     }
     

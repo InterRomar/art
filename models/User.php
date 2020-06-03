@@ -220,5 +220,29 @@ class User
 
         return $result->fetch();
     }
+    /**
+     *  Возвращяет имя пользователя
+     * @return string <p>Строку с именем пользователя</p>
+     */
+    public static function getUserNameById($id)
+    {
+        
+        // Соединение с БД
+        $db = Db::getConnection();
+
+        // Текст запроса к БД
+        $sql = 'SELECT `name` FROM user WHERE id = :id';
+
+        // Получение и возврат результатов. Используется подготовленный запрос
+        $result = $db->prepare($sql);
+        $result->bindParam(':id', $id, PDO::PARAM_INT);
+
+        $result->execute();
+        if ($user = $result->fetch()) {
+            // Если запись существует, возвращаем name пользователя
+            return $user['name'];
+        }
+        return false;
+    }
 
 }
