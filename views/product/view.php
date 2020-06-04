@@ -86,7 +86,7 @@ async function hello() {
 
           <div class="row">
             <div class="col-sm-12">
-              <h5>Комментарии</h5>
+              <h5>Комментарии<?php echo time();?></h5>
 
                <!-- <div class="row"> -->
                   <div class=" col-12">

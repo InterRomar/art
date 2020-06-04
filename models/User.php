@@ -67,7 +67,7 @@ class User
         $db = Db::getConnection();
 
         // Текст запроса к БД
-        $sql = 'SELECT * FROM user WHERE email = :email AND password = :password';
+        $sql = 'SELECT id FROM user WHERE email = :email AND password = :password';
 
         // Получение результатов. Используется подготовленный запрос
         $result = $db->prepare($sql);

@@ -6,28 +6,23 @@
 class Feedback
 {
 
-    public static function addComment($id,$id_user, $comment, $rating)
+    public static function addComment($id_user, $result)
     {
-    // Приводим $id к типу integer
-    $id = intval($id);
-    
+    $db = Db::getConnection();
+    $id_goods =  $result['id'];
+    $rating =  $result['rating'];
+    $comment = $result['comment'];
     // Текст запроса к БД
-    $sql = 'INSERT INTO rating_goods (id_user, id_goods, rating, comment) VALUES '
-    . '(:id_user, :id, :rating, :comment)';
+    $sql = 'INSERT INTO `rating_goods` (`id_user`, `id_goods`, `rating`, `comment`, `date`) VALUES '
+    . '(:id_user, :id, :rating, :comment,  NOW())';
     
     // Получение и возврат результатов. Используется подготовленный запрос
     $result = $db->prepare($sql);
-    $result->bindParam(':id_user', $id_user, PDO::PARAM_STR);
-    $result->bindParam(':id', $id, PDO::PARAM_STR);
-    $result->bindParam(':rating', $rating, PDO::PARAM_STR);
-    $result->bindParam(':comment', $comment, PDO::PARAM_INT);
-    
-    if ($result->execute()) {
-    // Если запрос выполенен успешно, возвращаем id добавленной записи
-    return $db->lastInsertId();
-    }
-    // Иначе возвращаем 0
-    return 0;
+    $result->bindParam(':id_user', $id_user, PDO::PARAM_INT);
+    $result->bindParam(':id', $id_goods, PDO::PARAM_INT);
+    $result->bindParam(':rating',$rating, PDO::PARAM_INT);
+    $result->bindParam(':comment', $comment, PDO::PARAM_STR);
+    return $result->execute();    
     }
 
     /**
