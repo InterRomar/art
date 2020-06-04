@@ -44,16 +44,19 @@ class FeedbackController
     }
 
     public function actionAddAjax($id) {
-        // Feedback::addComment($id, $id_user = 5, $comment, $rating);
-        // return true;
-
+        // Feedback::addComment($_POST["id"], 5, $_POST["comment"], $_POST["rating"]);
+        
         $result = array(
             'comment' => $_POST["comment"],
             'rating' => $_POST["rating"],
             'id' => $_POST["id"],
         ); 
-    
-        // Переводим массив в JSON
+        
+        
+        // // Переводим массив в JSON
         echo json_encode($result); 
+        // // echo json_encode($someValue); 
+        
+        // return true;
     }
 }
