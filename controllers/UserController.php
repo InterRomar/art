@@ -88,10 +88,9 @@ class UserController
                 $errors[] = 'Неправильные данные для входа на сайт';
             } else {
                 // Если данные правильные, запоминаем пользователя (сессия)
-                print_r($userId);
                 User::auth($userId);
                 // Перенаправляем пользователя в закрытую часть - кабинет 
-                //header("Location: /cabinet");
+                header("Location: /cabinet");
             }
         }
 
