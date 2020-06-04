@@ -17,12 +17,12 @@ function sendAjaxForm(result_form, ajax_form, url) {
         dataType: "html", //формат данных
         data: $("#"+ajax_form).serialize(),  // Сеарилизуем объект
         success: function(response) { //Данные отправлены успешно
+            $('#exampleModal').modal('hide');
+            
             if (response) {
-                result = $.parseJSON(response);
+                // result = $.parseJSON(response);
                 console.log(response);
-                
-                $('#result_form').html(`Рейтинг: ${result.rating} <br> Комментарий: ${result.comment} <br> id: ${result.id}`);
-                $('#exampleModal').modal('hide');
+                // $('#result_form').html(`Рейтинг: ${result.rating} <br> Комментарий: ${result.comment} <br> id: ${result.id}`);
             } else {
                 $('#result_form').html('Ответа не поступило(');
                 console.log('Ответа не поступило(');
