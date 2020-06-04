@@ -17,10 +17,20 @@ class User
     {
         // Соединение с БД
         $db = Db::getConnection();
-
+        // Хеширование пароля
+        $timeTarget = 0.05; // 50 миллисекунд.
+        $pass = $password;
+        $cost = 8;
+        do {
+            $cost++;
+            $start = microtime(true);
+            password_hash($pass, PASSWORD_BCRYPT, ["cost" => $cost]);
+            $end = microtime(true);
+        } while (($end - $start) < $timeTarget);
+        $password = password_hash($password, PASSWORD_BCRYPT, ["cost" => $cost]);
         // Текст запроса к БД
         $sql = 'INSERT INTO user (name, email, password) '
-                . 'VALUES (:name, :email, :password)';
+            . 'VALUES (:name, :email, :password)';
 
         // Получение и возврат результатов. Используется подготовленный запрос
         $result = $db->prepare($sql);
@@ -65,22 +75,22 @@ class User
     {
         // Соединение с БД
         $db = Db::getConnection();
-
+        echo $password;
         // Текст запроса к БД
-        $sql = 'SELECT * FROM user WHERE email = :email AND password = :password';
+        $sql = 'SELECT id,password FROM `user` WHERE email = :email';
 
         // Получение результатов. Используется подготовленный запрос
         $result = $db->prepare($sql);
-        $result->bindParam(':email', $email, PDO::PARAM_INT);
-        $result->bindParam(':password', $password, PDO::PARAM_INT);
+        $result->bindParam(':email', $email, PDO::PARAM_STR);
         $result->execute();
 
         // Обращаемся к записи
         $user = $result->fetch();
-
         if ($user) {
-            // Если запись существует, возвращаем id пользователя
-            return $user['id'];
+            if (password_verify($password, $user['password'])) {
+                // Если запись существует, возвращаем id пользователя
+                return $user['id'];
+            }
         }
         return false;
     }
@@ -226,7 +236,7 @@ class User
      */
     public static function getUserNameById($id)
     {
-        
+
         // Соединение с БД
         $db = Db::getConnection();
 
@@ -244,5 +254,4 @@ class User
         }
         return false;
     }
-
 }

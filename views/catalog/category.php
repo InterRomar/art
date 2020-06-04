@@ -35,7 +35,6 @@
                                                 if (mb_strlen($product['name']) <= 23 )
                                                 {
                                                     echo $product['name']." ";
-                                                    echo Feedback::getRating($product['id']);
                                                 }
                                                 else 
                                                 {   

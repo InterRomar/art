@@ -88,7 +88,7 @@
             </li>
             <?php else: ?>
             <li class="nav-item"><a href="/cabinet/" class='nav-link'><i
-                  class="user"></i><?php echo $name; echo $user['name'];?></a></li>
+                  class="user"></i><?php /*if($user['name'])echo$user['name'];*/?></a></li>
             <li class="nav-item"><a href="/user/logout/" class='nav-link nav__link--last'><i class="logOut"></i>
                 Выход</a></li>
             <?php endif; ?>
