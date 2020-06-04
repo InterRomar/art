@@ -39,6 +39,6 @@ class FeedbackController
         Feedback::addComment($id_user,$post);
         return true;
         // Переводим массив в JSON
-        return json_encode($result); 
+        return json_encode($post); 
     }
 }
