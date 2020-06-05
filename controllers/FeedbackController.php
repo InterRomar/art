@@ -29,6 +29,7 @@ class FeedbackController
             'rating' => $_POST["rating"],
             'id' => $_POST["id"],
         );
+        echo json_encode($post); 
         $id_user = 1; 
         if(isset($_SESSION['user']))
         {
@@ -39,6 +40,5 @@ class FeedbackController
         Feedback::addComment($id_user,$post);
         return true;
         // Переводим массив в JSON
-        return json_encode($post); 
     }
 }

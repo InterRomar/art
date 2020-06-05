@@ -2,10 +2,14 @@
 
 return array(
     // Отзывы:
-    
-    'feedback' => 'feedback/index/', // actionView в FeedbackController
-    'feedback/addAjax/([0-9]+)' => 'feedback/addAjax/$1', // actionAddAjax в FeedbackController
 
+    'feedback' => 'feedback/index', // actionView в FeedbackController
+    'feedback/addAjax/([0-9]+)' => 'feedback/addAjax/$1', // actionAddAjax в FeedbackController
+    // Сравнение
+    'compare/delete/([0-9]+)' => 'compare/delete/$1', // actionDelete в CompareController    
+    'compare/add/([0-9]+)' => 'compare/add/$1', // actionAdd в CompareController    
+    'compare/addAjax/([0-9]+)' => 'compare/addAjax/$1', // actionAddAjax в CompareController
+    'compare' => 'compare/index', // actionIndex в CompareController
 
     // Товар:
     'product/([0-9]+)' => 'product/view/$1', // actionView в ProductController
@@ -20,6 +24,7 @@ return array(
     'cart/add/([0-9]+)' => 'cart/add/$1', // actionAdd в CartController    
     'cart/addAjax/([0-9]+)' => 'cart/addAjax/$1', // actionAddAjax в CartController
     'cart' => 'cart/index', // actionIndex в CartController
+    
     // Пользователь:
     'user/register' => 'user/register',
     'user/login' => 'user/login',

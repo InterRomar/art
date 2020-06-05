@@ -39,6 +39,17 @@
             return false;
         });
     });
+    $(document).ready(function(){
+        $(".add-to-compare").click(function () {
+            var id = $(this).attr("data-id");
+            alert(id);
+            $.post("/compare/addAjax/"+id, {}, function (data) {
+                $("#compare-count").html(data);
+            });
+            
+            return false;
+        });
+    });
 </script>
 <!-- <article id="wrap"> -->
 <?php
