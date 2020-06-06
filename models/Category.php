@@ -28,6 +28,29 @@ class Category
         }
         return $categoryList;
     }
+    
+    /**
+     * Возвращает массив категорий для списка сравнений
+     * @return array <p>Массив с категориями</p>
+     */
+    public static function getCategoriesListByIds($idsArray)
+    {
+        // Соединение с БД
+        $db = Db::getConnection();
+        $idsString = implode(',', $idsArray);
+        // Запрос к БД
+        $result = $db->query("SELECT id, name FROM category WHERE status = '1' AND id IN ($idsString) ORDER BY sort_order, name ASC");
+
+        // Получение и возврат результатов
+        $i = 0;
+        $categoryList = array();
+        while ($row = $result->fetch()) {
+            $categoryList[$i]['id'] = $row['id'];
+            $categoryList[$i]['name'] = $row['name'];
+            $i++;
+        }
+        return $categoryList;
+    }
 
     /**
      * Возвращает массив категорий для списка в админпанели <br/>

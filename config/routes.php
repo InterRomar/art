@@ -7,8 +7,11 @@ return array(
     'feedback/addAjax/([0-9]+)' => 'feedback/addAjax/$1', // actionAddAjax в FeedbackController
     // Сравнение
     'compare/delete/([0-9]+)' => 'compare/delete/$1', // actionDelete в CompareController    
+    'compare/del/([0-9]+)' => 'compare/del/$1', // actionAdd в CompareController    
+    'compare/delAjax/([0-9]+)' => 'compare/delAjax/$1', // actionDelAjax в CompareController
     'compare/add/([0-9]+)' => 'compare/add/$1', // actionAdd в CompareController    
     'compare/addAjax/([0-9]+)' => 'compare/addAjax/$1', // actionAddAjax в CompareController
+    'compare/([0-9]+)' => 'compare/category/$1', // actionCategory в CompareController
     'compare' => 'compare/index', // actionIndex в CompareController
 
     // Товар:
