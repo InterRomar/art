@@ -6,7 +6,30 @@ $( document ).ready(function() {
         }
 	);
 });
+$( document ).ready(function() {
+    $("#compareButton").click(
+		function(){
+            let id = $(this).attr("data-id");
+			
+            if (this.classList.contains('add-to-compare')) {
+                sendAjaxCompare(id, `/compare/addAjax/${id}`)
+                console.log('adding');
+                
 
+                this.classList.remove('add-to-compare')
+                this.classList.add('remove-from-compare')
+                this.innerText = 'Убрать'
+            } else {
+                console.log('deleting');
+                sendAjaxCompare(id, `/compare/delAjax/${id}`)
+                this.classList.remove('remove-from-compare')
+                this.classList.add('add-to-compare')
+                this.innerText = 'Сравнить'
+            }
+            
+        }
+	);
+});
 
 function sendAjaxForm(result_form, ajax_form, url) {
     console.log(url);
@@ -32,6 +55,31 @@ function sendAjaxForm(result_form, ajax_form, url) {
     	},
     	error: function() { // Данные не отправлены
             $('#result_form').html('Ошибка. Данные не отправлены.');
+    	}
+ 	});
+}
+function sendAjaxCompare(id, url) {
+    console.log(url);
+    const item = {
+        id: id
+    }
+    console.log(item);
+    
+    $.ajax({
+        url:     url, //url страницы (action_ajax_form.php)
+        type:     "POST", //метод отправки
+        dataType: "html", //формат данных
+        data: item,  // Сеарилизуем объект
+        success: function(response) { //Данные отправлены успешно
+            if (response) {
+                console.log(response);
+            } else {
+                console.log('Ответа не поступило(');
+                
+            }
+    	},
+    	error: function() { // Данные не отправлены
+            console.log('Ошибка. Данные не отправлены.');
     	}
  	});
 }
