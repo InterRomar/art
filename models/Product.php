@@ -89,6 +89,49 @@ class Product
         }
         return $products;
     }
+    /**
+     * Возвращает список товаров в указанной категории
+     * @param type $categoryId <p>id категории</p>
+     * @param type $page [optional] <p>Номер страницы</p>
+     * @return type <p>Массив с товарами</p>
+     */
+    public static function getCompareListByCategory($productsIds, $categoryId, $page = 1)
+    {
+        $limit = Product::SHOW_BY_DEFAULT;
+        // Смещение (для запроса)
+        $offset = ($page - 1) * self::SHOW_BY_DEFAULT;
+        $idsString = implode(',', $productsIds);
+        // Соединение с БД
+        $db = Db::getConnection();
+        print_r($idsString);
+        // Текст запроса к БД
+        $sql = 'SELECT id, name, price, is_new FROM product '
+                . 'WHERE status = 1 AND category_id = :category_id '
+                . 'AND id IN :idsString'
+                . 'ORDER BY id ASC LIMIT :limit OFFSET :offset';
+
+        // Используется подготовленный запрос
+        $result = $db->prepare($sql);
+        $result->bindParam(':idsString', $idsString, PDO::PARAM_INT);
+        $result->bindParam(':category_id', $categoryId, PDO::PARAM_INT);
+        $result->bindParam(':limit', $limit, PDO::PARAM_INT);
+        $result->bindParam(':offset', $offset, PDO::PARAM_INT);
+
+        // Выполнение коменды
+        $result->execute();
+
+        // Получение и возврат результатов
+        $i = 0;
+        $products = array();
+        while ($row = $result->fetch()) {
+            $products[$i]['id'] = $row['id'];
+            $products[$i]['name'] = $row['name'];
+            $products[$i]['price'] = $row['price'];
+            $products[$i]['is_new'] = $row['is_new'];
+            $i++;
+        }
+        return $products;
+    }
 
     /**
      * Возвращает продукт с указанным id
@@ -171,10 +214,53 @@ class Product
             $products[$i]['code'] = $row['code'];
             $products[$i]['name'] = $row['name'];
             $products[$i]['price'] = $row['price'];
+            $products[$i]['category_id'] = $row['category_id'];
+            $products[$i]['brand'] = $row['brand'];
+            $products[$i]['description'] = $row['description'];
             $i++;
         }
         return $products;
     }
+
+
+    /**
+     * Возвращает список товаров с указанными индентификторами заданой категории
+     * @param array $idsArray <p>Массив с идентификаторами</p>
+     * @return array <p>Массив со списком товаров</p>
+     */
+    public static function getProdustsCategoryByIds($idsArray)
+    {
+        // Соединение с БД
+        $db = Db::getConnection();
+
+        // Превращаем массив в строку для формирования условия в запросе
+        $idsString = implode(',', $idsArray);
+
+        // Текст запроса к БД
+        $sql = "SELECT * FROM product WHERE status='1' AND id IN ($idsString)";
+
+        $result = $db->query($sql);
+
+        // Указываем, что хотим получить данные в виде массива
+        $result->setFetchMode(PDO::FETCH_ASSOC);
+
+        // Получение и возврат результатов
+        $i = 0;
+        $products = array();
+        while ($row = $result->fetch()) {
+            $products[$i]['id'] = $row['id'];
+            $products[$i]['code'] = $row['code'];
+            $products[$i]['name'] = $row['name'];
+            $products[$i]['price'] = $row['price'];
+            $products[$i]['category_id'] = $row['category_id'];
+            $products[$i]['brand'] = $row['brand'];
+            $products[$i]['description'] = $row['description'];
+            $i++;
+        }
+        return $products;
+    }
+    
+
 
     /**
      * Возвращает список рекомендуемых товаров

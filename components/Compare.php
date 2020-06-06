@@ -27,10 +27,7 @@ class Compare
         }
 
         // Проверяем есть ли уже такой товар в сравнении 
-        if (array_key_exists($id, $productsInCompare)) {
-            // Если такой товар есть в сравнении, но был добавлен еще раз, увеличим количество на 1
-            $productsInCompare[$id] ++;
-        } else {
+        if (!array_key_exists($id, $productsInCompare)) {
             // Если нет, добавляем id нового товара в сравнении с количеством 1
             $productsInCompare[$id] = 1;
         }
@@ -70,7 +67,10 @@ class Compare
      */
     public static function getProducts()
     {
-        if (isset($_SESSION['compare'])) {
+        // $array = array_count_values($_SESSION['compare']);
+        // print_r($array);
+        // print_r(array_keys($_SESSION['compare']));
+        if (count($_SESSION['compare']) > 1) {
             return $_SESSION['compare'];
         }
         return false;
@@ -137,5 +137,4 @@ class Compare
         // Записываем массив товаров с удаленным элементом в сессию
         $_SESSION['compare'] = $productsInCompare;
     }
-
 }
