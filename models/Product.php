@@ -22,8 +22,8 @@ class Product
 
         // Текст запроса к БД
         $sql = 'SELECT id, name, price, is_new FROM product '
-                . 'WHERE status = "1" ORDER BY id DESC '
-                . 'LIMIT :count';
+            . 'WHERE status = "1" ORDER BY id DESC '
+            . 'LIMIT :count';
 
         // Используется подготовленный запрос
         $result = $db->prepare($sql);
@@ -31,7 +31,7 @@ class Product
 
         // Указываем, что хотим получить данные в виде массива
         $result->setFetchMode(PDO::FETCH_ASSOC);
-        
+
         // Выполнение коменды
         $result->execute();
 
@@ -65,8 +65,8 @@ class Product
 
         // Текст запроса к БД
         $sql = 'SELECT id, name, price, is_new FROM product '
-                . 'WHERE status = 1 AND category_id = :category_id '
-                . 'ORDER BY id ASC LIMIT :limit OFFSET :offset';
+            . 'WHERE status = 1 AND category_id = :category_id '
+            . 'ORDER BY id ASC LIMIT :limit OFFSET :offset';
 
         // Используется подготовленный запрос
         $result = $db->prepare($sql);
@@ -105,17 +105,19 @@ class Product
         $db = Db::getConnection();
         print_r($idsString);
         // Текст запроса к БД
-        $sql = 'SELECT id, name, price, is_new FROM product '
-                . 'WHERE status = 1 AND category_id = :category_id '
-                . 'AND id IN :idsString'
-                . 'ORDER BY id ASC LIMIT :limit OFFSET :offset';
+        $sql = "SELECT id, name, price, is_new FROM product WHERE status = 1 AND category_id = $categoryId AND id IN ($idsString)ORDER BY id ASC LIMIT $limit OFFSET $offset";
+        // $in  = str_repeat('?,', count($idsString) - 1) . '?';
+        // $sql = 'SELECT id, name, price, is_new FROM product '
+        //     . 'WHERE status = 1 AND category_id = :category_id '
+        //     . 'AND id IN (:idsString)'
+        //     . 'ORDER BY id ASC LIMIT :limit OFFSET :offset';
 
         // Используется подготовленный запрос
         $result = $db->prepare($sql);
-        $result->bindParam(':idsString', $idsString, PDO::PARAM_INT);
-        $result->bindParam(':category_id', $categoryId, PDO::PARAM_INT);
-        $result->bindParam(':limit', $limit, PDO::PARAM_INT);
-        $result->bindParam(':offset', $offset, PDO::PARAM_INT);
+        // $result->bindParam(':idsString', $in, PDO::PARAM_STR_CHAR);
+        // $result->bindParam(':category_id', $categoryId, PDO::PARAM_INT);
+        // $result->bindParam(':limit', $limit, PDO::PARAM_INT);
+        // $result->bindParam(':offset', $offset, PDO::PARAM_INT);
 
         // Выполнение коменды
         $result->execute();
@@ -259,7 +261,7 @@ class Product
         }
         return $products;
     }
-    
+
 
 
     /**
@@ -273,8 +275,8 @@ class Product
 
         // Получение и возврат результатов
         $result = $db->query('SELECT id, name, price, is_new FROM product '
-                . 'WHERE status = "1" AND is_recommended = "1" '
-                . 'ORDER BY id DESC');
+            . 'WHERE status = "1" AND is_recommended = "1" '
+            . 'ORDER BY id DESC');
         $i = 0;
         $productsList = array();
         while ($row = $result->fetch()) {
@@ -383,11 +385,11 @@ class Product
 
         // Текст запроса к БД
         $sql = 'INSERT INTO product '
-                . '(name, code, price, category_id, brand, availability,'
-                . 'description, is_new, is_recommended, status)'
-                . 'VALUES '
-                . '(:name, :code, :price, :category_id, :brand, :availability,'
-                . ':description, :is_new, :is_recommended, :status)';
+            . '(name, code, price, category_id, brand, availability,'
+            . 'description, is_new, is_recommended, status)'
+            . 'VALUES '
+            . '(:name, :code, :price, :category_id, :brand, :availability,'
+            . ':description, :is_new, :is_recommended, :status)';
 
         // Получение и возврат результатов. Используется подготовленный запрос
         $result = $db->prepare($sql);
@@ -443,7 +445,7 @@ class Product
         // Путь к изображению товара
         $pathToProductImage = $path . $id . '.jpg';
 
-        if (file_exists($_SERVER['DOCUMENT_ROOT'].$pathToProductImage)) {
+        if (file_exists($_SERVER['DOCUMENT_ROOT'] . $pathToProductImage)) {
             // Если изображение для товара существует
             // Возвращаем путь изображения товара
             return $pathToProductImage;
@@ -452,5 +454,4 @@ class Product
         // Возвращаем путь изображения-пустышки
         return $path . $noImage;
     }
-
 }

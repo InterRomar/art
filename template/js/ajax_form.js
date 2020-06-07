@@ -7,7 +7,7 @@ $( document ).ready(function() {
 	);
 });
 $( document ).ready(function() {
-    $("#compareButton").click(
+    $(".compare-btn").click(
 		function(){
             let id = $(this).attr("data-id");
 			

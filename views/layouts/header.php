@@ -83,7 +83,7 @@
             <li class="nav-item">
               <a href="/compare" class='nav-link'>
                 Сравнение
-                (<span id="cart-count"><?php echo Compare::countItems(); ?></span>)
+                (<span id="compare-count"><?php echo Compare::countItems(); ?></span>)
               </a>
             </li>
             <li class="nav-item">
