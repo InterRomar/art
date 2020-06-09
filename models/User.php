@@ -75,7 +75,7 @@ class User
     {
         // Соединение с БД
         $db = Db::getConnection();
-        echo $password;
+        
         // Текст запроса к БД
         $sql = 'SELECT id,password FROM `user` WHERE email = :email';
 
